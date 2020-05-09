@@ -7,8 +7,11 @@ const app = express();
 // set static folder
 ////////////////////////////////////////////////
 //                     MIDDLE WARE
+// basically completing http (protocol) then host and then original url
 const logger = (req,res,next)=>{
-    console.log('hello');
+    console.log(`${req.protocol}://${req.get('host')}${
+        req.originalUrl
+    }: ${moment().format()}`);
     next();
 }
 
